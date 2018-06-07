@@ -4,7 +4,10 @@
   "description": "cs290 final project",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "handlebars views/partials/ -f public/templates.js",
+    "prestart": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/OSU-CS290-Sp18/final-project-final-project-webdev/issues"
   },
-  "homepage": "https://github.com/OSU-CS290-Sp18/final-project-final-project-webdev#readme"
+  "homepage": "https://github.com/OSU-CS290-Sp18/final-project-final-project-webdev#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.11"
+  }
 }
