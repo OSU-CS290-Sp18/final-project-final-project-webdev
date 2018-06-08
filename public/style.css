@@ -23,6 +23,7 @@ a {
 .site-title {
   margin: 0;
   padding: 10px 20px;
+  font-size: %50;
   font-weight: bold;
   background-color: #96d717;
   color: #16344c;
@@ -102,12 +103,13 @@ a:focus {
 }
 
 .comment-button {
-  font-size: 20px;	
+  font-size: 25px;	
   color: #16344c;
   background-color: #96d717;
   border: #96d717;
   text-align: right;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
 }
 
 .comment-button:hover,
@@ -118,7 +120,7 @@ a:focus {
 
 .create-new-button {
   background-color: #96d717;
-  border: #96d717;
+  border: solid 2px #16344c;
   color: #16344c;
   float: right;
   margin-right: 0px;
@@ -129,12 +131,13 @@ a:focus {
   bottom: 30px;
   cursor: pointer;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 }
 
 .create-new-button:hover,
 .create-new-button:focus {
   border: #96d717;
-  color: #96d717; 	
+  color: #44dbd4; 	
   background-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -201,7 +204,7 @@ hr {
 	font-size: 16px;
 	text-align: left;
 	font-family: "Arial Black", Gadget, sans-serif;
-	marhin-bottom: 1px;
+	margin-bottom: 1px;
 }
 
 .tags {
@@ -264,8 +267,10 @@ hr {
   min-width: 350px;
   min-height: 300px;
   margin: 40px auto;
-  background-color: #fff;
+  background-color: #16344c;
   border-radius: 15px;
+  border: 2px solid #96d717;
+  color: #96d717;
 }
 
 .modal-header {
@@ -287,6 +292,7 @@ hr {
   background: none;
   padding: 0;
   cursor: pointer;
+  color: #96d717;
 }
 
 .modal-body {
@@ -297,7 +303,31 @@ hr {
   display: flex;
   align-items: center;
   font-size: 20px;
-  margin: 10px 0;
+  margin: 10px 0;  
+}
+
+#post-text-input {
+  background-color: #dadada;
+  border: 2px solid #96d717; 
+  border-radius: 6px;  
+}
+
+#post-attribution-input {
+  background-color: #dadada;	
+  border: 2px solid #96d717;
+  border-radius: 6px;  
+}
+
+#comment-text-input {
+  background-color: #dadada;
+  border: 2px solid #96d717;  
+  border-radius: 6px;  
+}
+
+#comment-attribution-input {
+  background-color: #dadada;	
+  border: 2px solid #96d717;
+  border-radius: 6px;  
 }
 
 .post-input-element label {
@@ -318,6 +348,56 @@ hr {
   min-height: 64px;
 }
 
+.tag-checkbox {
+  font-size: 30px;
+  left: 30px;  
+}
+
+#create-comment-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1010;
+  overflow: scroll;
+}
+
+.modal-dialog {
+  width: auto;
+  max-width: 600px;
+  min-width: 350px;
+  min-height: 300px;
+  margin: 40px auto;
+  background-color: #16344c;
+  border-radius: 15px;
+}
+
+.comment-input-element {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.comment-input-element label {
+  font-weight: 600;
+  flex: 1 75px;
+  margin-right: 10px;
+}
+
+.comment-input-element input,
+.comment-input-element textarea {
+  flex: 6 200px;
+  padding: 8px;
+  font-size: 20px;
+  border: 1px solid #aaa;
+}
+
+.comment-input-element textarea {
+  min-height: 64px;
+}
+
 .modal-footer {
   display: flex;
   justify-content: flex-end;
@@ -326,7 +406,7 @@ hr {
 
 .modal-footer button {
   font-size: 20px;
-  background-color: #fff;
+  background-color: #96d717;
   color: #333;
   border: 1px solid #333;
   border-radius: 5px;
@@ -336,16 +416,20 @@ hr {
 }
 
 .modal-footer .modal-cancel-button:hover {
-  background-color: #eee;
+  background-color: #16344c;
+  color: #44dbd4;
+  border: none;
 }
 
 .modal-footer .modal-accept-button {
-  background-color: #319df6;
-  color: #fff;
+  background-color: #44dbd4;
+  color: black;
 }
 
 .modal-footer .modal-accept-button:hover {
-  background-color: #087dde;
+  background-color: #16344c;
+  color: #44dbd4;
+  border: none;
 }
 
 .error-container {
