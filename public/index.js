@@ -112,6 +112,69 @@ cancel_com_btn.addEventListener("click", () => {
 	
 });
 
+//because create post button doesn't have id
+let create_post_btn = document.getElementById("create-post-modal").children[0].children[2].children[1];
+
+create_post_btn.addEventListener("click", () => {
+	post_text = document.getElementById("post-text-input");
+	post_author = document.getElementById("post-attribution-input");
+	nintendo_check = document.getElementById("nintendo-tag");
+	xbox_check = document.getElementById("xbox-tag");
+	ps_check = document.getElementById("playstation-tag");
+	
+	var tag_array = []
+	
+	if(nintendo_check.checked == true)
+	{
+		tag_array.push("nintendo");
+	}
+	if(xbox_check.checked == true)
+	{
+		tag_array.push("xbox");
+	}
+	if(ps_check.checked == true)
+	{
+		tag_array.push("playstation");
+	}
+	
+	console.log(tag_array);
+	var posts = 
+	{
+		_id: 1000,
+		text: post_text.value,
+		author: post_author.value,
+		tags: tag_array,
+		comments: [],
+	}
+	
+	var post_html = Handlebars.templates.postTemplate(posts);
+	
+	var post_container = document.getElementsByClassName("post-container")[0];
+	
+	post_container.insertAdjacentHTML("beforeend", post_html);
+	
+	add_comm_event();
+	
+	post_text.value = ""
+	post_author.value = ""
+	nintendo_check.value = false
+	xbox_check.value = false
+	ps_check = false
+	
+	document.getElementById("modal-backdrop").classList.add("hidden");
+	document.getElementById("create-post-modal").classList.add("hidden");
+	
+});
+
+
+let unhide_post_modal = document.getElementsByClassName("create-new-button")[0];
+
+unhide_post_modal.addEventListener("click", () => {
+	document.getElementById("modal-backdrop").classList.remove("hidden");
+	document.getElementById("create-post-modal").classList.remove("hidden");
+	
+});
+
  function showCreatePostModal()
  {
  	var modalBackdrop = document.getElementById('modal-backdrop');
@@ -127,7 +190,7 @@ cancel_com_btn.addEventListener("click", () => {
  
    modalBackdrop.classList.add('hidden');
    createPostModal.classList.add('hidden');
- 
+	clearSearch();
  }
 
 function clearSearch() {
