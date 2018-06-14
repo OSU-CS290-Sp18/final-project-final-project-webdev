@@ -262,6 +262,10 @@ hr {
   display: none;
 }
 
+.hidden-text {
+  color: #16344c;	
+}
+
 .modal-dialog {
   width: auto;
   max-width: 600px;
@@ -349,10 +353,19 @@ hr {
   min-height: 64px;
 }
 
-.tag-checkbox {
-  font-size: 30px;
-  left: 30px;  
+.choose-tags label {
+  font-weight: 600;
+  flex: 1 75px;
+  margin-right: 10px;
+  font-size: 20px;
 }
+
+.tag-checkbox {
+  font-size: 20px;
+  margin-left: 65px;
+  margin-top: 10px;
+}
+
 
 #create-comment-modal {
   position: fixed;
