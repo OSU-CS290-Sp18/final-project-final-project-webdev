@@ -444,3 +444,30 @@ hr {
   font-weight: bold;
   color: #96d717;
 }
+
+.tags-button-box{
+  text-align: center;	
+}
+
+.tags-button {
+  background-color: #96d717;
+  border: solid 5px #96d717;
+  color: #16344c;
+  font-size: 70px;
+  font-weight: bold;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+};
+
+.tags-button:hover,
+.tags-button:focus {
+  border: #96d717;
+  color: #44dbd4; 	
+  background-color: rgba(0, 0, 0, 0.4);
+}
