@@ -2,61 +2,62 @@
 Javascript
 *****************/
 
-var which_comm = 0
+var which_comm = 0;
+
 
 function add_comm_event()
 {
 	var buttons = document.getElementsByClassName("comment-button");
 	for(i = 0; i < buttons.length; i++)
 	{
-		buttons[i].addEventListener("click", function(){
-			getElementById("create-comment-modal").classList.remove("hidden");
+		btn = buttons[i]
+		btn.addEventListener("click", function() {
+			document.getElementById("create-comment-modal").classList.remove("hidden");
+			which_comm = this.parentElement.id;;
 		});
 	}
 }
 
-function showCreatePostModal()
+function add_close_btn_event()
 {
-	var modalBackdrop = document.getElementById('modal-backdrop');
-	var createPostModal = document.getElementById('create-post-modal');
-
-	modalBackdrop.classList.remove('hidden');
-	createPostModal.classList.remove('hidden');
-}
-
-function hideCreateTwitModal() {
-
-  var modalBackdrop = document.getElementById('modal-backdrop');
-  var createPostModal = document.getElementById('create-post-modal');
-
-  modalBackdrop.classList.add('hidden');
-  createPostModal.classList.add('hidden');
-
+	var modals_x =  document.getElementsByClassName("modal-close-button");
+	for(i = 0; i < modals_x.length; i++)
+	{
+		modals_x[i].addEventListener("click", () => {
+			document.getElementById("create-comment-modal").classList.add("hidden");
+		});
+	}
 }
 
 window.addEventListener("load",function() {
   add_comm_event();
-
-  var createPostButton = document.getElementsByClassName('create-new-button')[0];
-  if (createPostButton)	{
-  	createPostButton.addEventListener('click', showCreatePostModal);
-  }
-
-  var modalCancelButton = document.getElementsByClassName("modal-cancel-button")[0];
-  if (modalCancelButton) {
-  	modalCancelButton.addEventListener('click', hideCreateTwitModal);
-  }
-
-    var modalCloseButton = document.getElementsByClassName("modal-close-button")[0];
-  if (modalCloseButton) {
-  	modalCloseButton.addEventListener('click', hideCreateTwitModal);
-  }
+  add_close_btn_event();
 });
-/*
-let create_com_btn = document.getElementById('create-twit-button');
-create_twit_b.addEventListener("click", () => {
-	mod_back.className = "not_hidden";
-	create_twit_mod.className = "not_hidden";
+
+//*
+let create_com_btn = document.getElementsByClassName('modal-accept-button')[0];
+create_com_btn.addEventListener("click", () => {	
+	var comment_content = 
+	{
+		text: document.getElementById("comment-text-input").value,
+		author: document.getElementById("comment-attribution-input").value,
+		parentID: which_comm,
+	};
+	
+	var comm_html = Handlebars.templates.commentTemplate(comment_content);
+	
+	//the comment div is the 5th child
+	var comment_container = document.getElementById(which_comm).children[4];
+	
+	comment_container.insertAdjacentHTML("beforeend", comm_html);
+	
+	create_com_btn.parentElement.classList.add("hidden");
+	
+	console.log("create btn");
+	
 });
-*/
+//*/
+
+
+
 		
