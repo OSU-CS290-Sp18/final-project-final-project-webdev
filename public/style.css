@@ -484,3 +484,7 @@ hr {
   display: inline-block;
   cursor: pointer;
 }
+
+#image404 {
+  border: solid 5px #96d717;
+}
