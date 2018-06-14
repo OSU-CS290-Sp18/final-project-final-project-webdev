@@ -1,0 +1,25 @@
+<article class="post">
+  <div class="post-content">
+    <p class="post-text">
+      {{text}}
+    </p>
+    <p class="post-attribution">
+      <a href="#">{{author}}</a>
+    </p>
+  </div>
+  <p class="tags-title">Tags:</p>
+  <ul class="tags-list">
+    <li class="tags">
+      {{#each tag}}
+        <a class={{tag}} href="#">{{tag}}</a>
+      {{/each}}
+    </li>
+  </ul>
+  <p class="comment-title">Comments:</p>
+  {{#each comment}}
+    {{> commentTemplate}}
+  {{/each}}
+  <button type="button" class="comment-button">
+    <i class="far fa-comment-alt"></i>
+  </button>
+</article>
