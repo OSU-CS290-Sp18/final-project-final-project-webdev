@@ -26,7 +26,6 @@ app.use(bodyParser.json());
 /////////////////////// ROUTES ////////////////////////
 ///////////////////////////////////////////////////////
 
-var data = require('./data.json');
 app.get('/', function (req, res, next) {
     var postCollection = mongoDB.collection('posts');
     postCollection.find().toArray((err, posts) => {
