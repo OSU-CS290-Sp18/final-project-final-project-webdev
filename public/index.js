@@ -38,8 +38,6 @@ function add_close_btn_event()
 	}
 }
 
-
-
 //the create comment button has no id
 let create_com_btn = document.getElementById('create-comment-modal').children[0].children[2].children[1];
 
@@ -54,7 +52,7 @@ create_com_btn.addEventListener("click", () => {
 	}
 	else
 	{
-	
+		
 		var comment_content = 
 		{
 			text: comm_text.value,
@@ -62,13 +60,32 @@ create_com_btn.addEventListener("click", () => {
 			parentID: which_comm,
 		};
 		
-		var comm_html = Handlebars.templates.commentTemplate(comment_content);
-		
-		// the comment div is the 5th child
-		var comment_container = document.getElementById(which_comm).children[3];
-		
-		comment_container.insertAdjacentHTML("afterend", comm_html);
-		
+		var request = new XMLHttpRequest();
+		var postID = which_comm;
+		var url = "/post/" + postID + "/newComment";
+		request.open("POST", url);
+
+		var requestBody = JSON.stringify({
+			author: comm_auth.value,
+			text: comm_text.value
+		});
+		request.addEventListener('load', (event) => {
+			if (event.target.status === 200) {
+
+				var comm_html = Handlebars.templates.commentTemplate(comment_content);
+
+				// the comment div is the 5th child
+				var comment_container = document.getElementById(which_comm).children[3];
+
+				comment_container.insertAdjacentHTML("afterend", comm_html);
+			} else {
+				alert("Error creating comment: " + event.target.response);
+			}
+		});
+
+		request.setRequestHeader('Content-Type', 'application/json');
+		request.send(requestBody);
+
 		document.getElementById('create-comment-modal').classList.add("hidden");
 		document.getElementById("modal-backdrop").classList.add("hidden");
 		
