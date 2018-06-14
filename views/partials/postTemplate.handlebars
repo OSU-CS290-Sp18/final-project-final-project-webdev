@@ -9,11 +9,11 @@
   </div>
   <p class="tags-title">Tags:</p>
   <ul class="tags-list">
+    {{#each tags}}
     <li class="tags">
-      {{#each tags}}
         <a class={{this}} href="#">{{this}}</a>
-      {{/each}}
     </li>
+    {{/each}}
   </ul>
   <p class="comment-title">Comments:</p>
   {{#each comments}}

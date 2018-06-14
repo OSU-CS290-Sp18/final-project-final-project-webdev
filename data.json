@@ -9,16 +9,62 @@
                 {
                     "author": "The Baconadian",
                     "text": "Spotify only disables you from song jumping on handheld phones. You don't need premium to play any specific music on Tablets, Consoles, or Computers. ",
-                    "parentID": "0",
                     "_id": 0
                 }, {
                     "author": "sec713",
                     "text": "Spotify only disables you from song jumping on handheld phones. You don't need premium to play any specific music on Tablets, Consoles, or Computers. ",
-                    "parentID": "0",
                     "_id": 1
                 }
             ],
             "_id": 0
+        },
+        {
+            "author": "Finn Ptrsn",
+            "text": "I gotta talk about this! I've never played a Warriors game before and wasn't sure I would enjoy this. I loved Senran Kagura on the 3 DS so I figured this could be similar in terms of gameplay.This game just rocks!The attention to detail and fanservice is spot on.The gameplay is perfect if you just want to have some fun for short bursts of time.Each battle takes around 10 - 20 minutes and it never gets boring as new missions and objectives constantly pop up.  Did I mention the fanservice ? !Like how Link puts away his sword in the opening cinematic just like in the reveal trailer of what would become Twilight Princess.  Get this game! ",
+            "tags": [ "nintendo" ],
+            "comments": [
+                {
+                    "author": "Steve Zacharakis",
+                    "text": "Scan 5 amiibo a day to help with the massive grind... got 50k rupees yesterday lol",
+                    "_id": 0
+                }, {
+                    "author": "Justin Luey",
+                    "text": "There are only two kinds of Nintendo fans: those who like Hyrule Warriors and those who will.",
+                    "_id": 1
+                }
+            ],
+            "_id": 1
+        },
+        {
+            "author": "Benjamin Robmann",
+            "text": "I wonder how we Train our Pokemon in Let's Go Pikachu and Eevee 🤔",
+            "tags": [ "nintendo" ],
+            "comments": [
+                {
+                    "author": "Mike Kurzer",
+                    "text": "I really don’t mind Go catching mechanics. It can be fun. But i really hope the game has normal leveling.",
+                    "_id": 0
+                }, {
+                    "author": "Silvestre Sanchez",
+                    "text": "With hopes and dreams man... :)",
+                    "_id": 1
+                }
+            ],
+            "_id": 2
+        },
+        {
+            "author": "Miller AKA GetSomeGames",
+            "text": "I'll post my Platinum list here. I was a massive trophy hunter for about 2 years but have since dialed it back a little. I havent gotten one in a long time and I have no idea when my next one will be, maybe Rocket League.These arent in order of when I got them, just the order that playstation.com puts them in lol. Ratchet and Clank (PS3), Resistance: Burning Skies (Vita), Jak and Daxter: The Precursor Legacy (PS3), inFAMOUS Second Son (PS4), Unit 13(Vita), Smart As(Vita), inFAMOUS 2(PS3), Need for Speed Rivals(PS4), Rayman Origins(Vita), Madden 25(PS4), God of War 3(PS3), Velocity Ultra(PS3 / Vita), PlayStation All Stars Battle Royale(Vita), Resogun(PS4), Sleeping Dogs(PS3), Guacamelee(PS3), Uncharted 3: Drake 's Deception (PS3), Sound Shapes (PS3, Vita, and PS4) For a total of 20. I'm REALLY proud of quite a few of these.",
+            "tags": [ "playstation" ],
+            "comments": [ ],
+            "_id": 3
+        },
+        {
+            "author": "Max Meyer",
+            "text": "Is anyone else more excited about TitanFall 3 and Respawn’s Star Wars game than Anthem? I hope we see them both at E3.",
+            "tags": [ "xbox", "playstation" ],
+            "comments": [ ],
+            "_id": 4
         }
     ]
 }

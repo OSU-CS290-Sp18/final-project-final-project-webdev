@@ -22,6 +22,25 @@ app.get('/', function (req, res, next) {
     res.status(200).render('home', { posts: data.posts });
 });
 
+app.get('/tag/:tag', function (req, res, next) {
+    const tag = req.params.tag;
+    
+    if (data.tags.includes(tag)) {
+        var posts = [];
+        for (let i = 0; i < data.posts.length; i++) {
+            const e = data.posts[i];
+            if (e.tags.includes(tag)) posts.push(e);
+        }
+        if (posts) {
+            res.status(200).render('home', {
+                posts: posts
+            });
+        }
+    } else {
+        next();
+    }
+});
+
 app.use(express.static('public'));
 
 app.get('*', function (req, res) {
