@@ -449,6 +449,13 @@ hr {
   text-align: center;	
 }
 
+.tags-button:hover,
+.tags-button:focus {
+  border: #96d717;
+  color: #44dbd4; 	
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 .tags-button {
   background-color: #96d717;
   border: solid 5px #96d717;
@@ -463,11 +470,5 @@ hr {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-};
-
-.tags-button:hover,
-.tags-button:focus {
-  border: #96d717;
-  color: #44dbd4; 	
-  background-color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
 }
