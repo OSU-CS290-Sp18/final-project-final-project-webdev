@@ -31,7 +31,20 @@ function remove_post_btn()
 	{
 		btn = buttons[i]
 		btn.addEventListener("click", function() {
-			this.parentElement.parentElement.removeChild(this.parentElement);
+			var request = new XMLHttpRequest();
+			var postID = this.parentElement.id;
+			var url = "/post/" + postID + "/delete";
+			request.open("DELETE", url);
+			
+			request.addEventListener('load', (event) => {
+				if (event.target.status === 200) {
+					this.parentElement.parentElement.removeChild(this.parentElement);
+				} else {
+					alert("Error deleting comment: " + event.target.response);
+				}
+			});
+
+			request.send(null);
 		})
 	}
 }

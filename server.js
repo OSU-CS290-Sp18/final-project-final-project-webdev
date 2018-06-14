@@ -129,11 +129,11 @@ app.delete('/post/:id/delete', (req, res, next) => {
     var postCollection = mongoDB.collection('posts');
     postCollection.remove(
         {postID: id},
-        (err, numRemoved) => {
+        (err, result) => {
             if (err) {
-                res.status(500).send('Error adding comment to post.');
+                res.status(500).send('Error deleting post.');
             } else {
-                if (numRemoved > 0) {
+                if (result.result.n > 0) {
                     res.status(200).end();
                 } else {
                     next();
