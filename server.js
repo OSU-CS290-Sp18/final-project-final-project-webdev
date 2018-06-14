@@ -82,7 +82,7 @@ app.post('/post/:id/newComment', (req, res, next) => {
 });
     
 app.get('*', function (req, res) {
-    res.status(404).render('404');
+    res.status(404).render('404', {active: { none: true }});
 });
 
 ///////////////////////////////////////////////////////
