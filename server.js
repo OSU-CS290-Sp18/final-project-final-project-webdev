@@ -47,7 +47,7 @@ app.get('/tag/:tag', function (req, res, next) {
 
 app.use(express.static('public'));
 
-app.post('/post/new', (req, res, next) => {
+app.post('/newPost', (req, res, next) => {
     // author and text are strings, tags is an array of strings
     var post = {
         author: req.body.author,
@@ -56,10 +56,29 @@ app.post('/post/new', (req, res, next) => {
     }
     
     if (req.body.author && req.body.text) {
-        data.posts.push(post)
-        res.status(200).end()
+        data.posts.push(post);
+        res.status(200).end();
     }
     else res.status(400).send("Request needs a json body with an author string, text string, and array of string tags.");
+});
+
+app.post('/post/:id/newComment', (req, res, next) => {
+    var id = parseInt(req.params.id, 10);
+    var post = data.posts.filter(e => e._id === id)[0];
+    if (post) {
+        if (req.body.author && req.body.text)
+        {
+            var comment = {
+                author: req.body.author,
+                text: req.body.text
+            }
+            post.comments.push(comment);
+            res.status(200).end();
+        } 
+        else res.status(400).send("Request needs a json body with an author string and text string.");
+    } else {
+        next();
+    }
 });
     
 app.get('*', function (req, res) {
