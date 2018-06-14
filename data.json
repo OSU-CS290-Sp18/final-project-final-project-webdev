@@ -1,0 +1,25 @@
+{
+    "tags": [ "xbox", "playstation", "nintendo" ],
+    "posts": [
+        {
+            "author": "Thebereis",
+            "text": "Well, if you don't have the premium and use the spotify on Xbox one you can play any music anytime in any playlist and jump how much musics you want.This is only for premium members but you can do this on Xbox one too.I don 't know is a bug or a \"special gift for Xbox live members\" but you can do this.The adds still on non premium members but is only 30 seconds or one minute of add. ",
+            "tags": [ "xbox" ],
+            "_id": 0
+        }
+    ],
+    "comments": [
+        {
+            "author": "The Baconadian",
+            "text": "Spotify only disables you from song jumping on handheld phones. You don't need premium to play any specific music on Tablets, Consoles, or Computers. ",
+            "parentID": "0",
+            "_id": 0
+        },
+        {
+            "author": "sec713",
+            "text": "Spotify only disables you from song jumping on handheld phones. You don't need premium to play any specific music on Tablets, Consoles, or Computers. ",
+            "parentID": "0",
+            "_id": 1
+        }
+    ]
+}
