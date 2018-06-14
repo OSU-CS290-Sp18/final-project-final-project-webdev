@@ -432,7 +432,7 @@ hr {
 .modal-footer .modal-cancel-button:hover {
   background-color: #16344c;
   color: #44dbd4;
-  border: none;
+  border: #16344c;
 }
 
 .modal-footer .modal-accept-button {
@@ -443,7 +443,6 @@ hr {
 .modal-footer .modal-accept-button:hover {
   background-color: #16344c;
   color: #44dbd4;
-  border: none;
 }
 
 .error-container {
@@ -464,7 +463,7 @@ hr {
 
 .tags-button:hover,
 .tags-button:focus {
-  border: #96d717;
+  border: solid 5px #96d717;
   color: #44dbd4; 	
   background-color: rgba(0, 0, 0, 0.4);
 }
