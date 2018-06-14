@@ -5,6 +5,7 @@ var allPosts = [];
 
 var which_comm = 0;
 
+
 function add_comm_event()
 {
 	var buttons = document.getElementsByClassName("comment-button");
@@ -14,7 +15,8 @@ function add_comm_event()
 		btn.addEventListener("click", function() {
 			document.getElementById("create-comment-modal").classList.remove("hidden");
 			document.getElementById("modal-backdrop").classList.remove("hidden");
-			which_comm = this.parentElement.id;;
+			which_comm = this.parentElement.id;
+
 		});
 	}
 }
@@ -28,40 +30,68 @@ function add_close_btn_event()
 			document.getElementById("create-comment-modal").classList.add("hidden");
 			document.getElementById("create-post-modal").classList.add("hidden");
 			document.getElementById("modal-backdrop").classList.add("hidden");
+			
+			document.getElementById("comment-text-input").value = "";
+			document.getElementById("comment-attribution-input").value = "";
+			
 		});
 	}
 }
 
-window.addEventListener("load",function() {
-  add_comm_event();
-  add_close_btn_event();
-});
+
 
 //the create comment button has no id
 let create_com_btn = document.getElementById('create-comment-modal').children[0].children[2].children[1];
 
 create_com_btn.addEventListener("click", () => {	
-	// console.log("here");
 	
-	// var comment_content = 
-	// {
-		// text: document.getElementById("comment-text-input").value,
-		// author: document.getElementById("comment-attribution-input").value,
-		// parentID: which_comm,
-	// };
+	comm_text = document.getElementById("comment-text-input")
+	comm_auth = document.getElementById("comment-attribution-input")
 	
-	// var comm_html = Handlebars.templates.commentTemplate(comment_content);
+	if(comm_text.value == "" || comm_auth.value == "")
+	{
+		alert("both text and author boxes must be filled");
+	}
+	else
+	{
 	
-	// the comment div is the 5th child
-	// var comment_container = document.getElementById(which_comm).children[4];
+		var comment_content = 
+		{
+			text: comm_text.value,
+			author: comm_auth.value,
+			parentID: which_comm,
+		};
+		
+		var comm_html = Handlebars.templates.commentTemplate(comment_content);
+		
+		// the comment div is the 5th child
+		var comment_container = document.getElementById(which_comm).children[3];
+		
+		comment_container.insertAdjacentHTML("afterend", comm_html);
+		
+		document.getElementById('create-comment-modal').classList.add("hidden");
+		document.getElementById("modal-backdrop").classList.add("hidden");
+		
+		comm_text.value = "";
+		comm_auth.value = "";
+	}	
 	
-	// comment_container.insertAdjacentHTML("beforeend", comm_html);
+});
+
+
+//the cancel comment button has no id
+let cancel_com_btn = document.getElementById('create-comment-modal').children[0].children[2].children[0];
+
+cancel_com_btn.addEventListener("click", () => {
 	
-	// create_com_btn.parentElement.classList.add("hidden");
+	comm_text = document.getElementById("comment-text-input");
+	comm_auth = document.getElementById("comment-attribution-input");
 	
-	// console.log("create btn");
+	document.getElementById('create-comment-modal').classList.add("hidden");
+	document.getElementById("modal-backdrop").classList.add("hidden");
 	
-	
+	comm_text.value = "";
+	comm_auth.value = "";
 	
 });
 
@@ -147,7 +177,7 @@ function parsePosts(postElem) {
 
 
 window.addEventListener("load",function() {
-	add_comm_event();
+	// add_comm_event();
 
 	var postElemsCollection = document.getElementsByClassName('post');
 	for (var i = 0; i < postElemsCollection.length; i++){
