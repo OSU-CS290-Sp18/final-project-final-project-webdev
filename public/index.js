@@ -13,6 +13,7 @@ function add_comm_event()
 		btn = buttons[i]
 		btn.addEventListener("click", function() {
 			document.getElementById("create-comment-modal").classList.remove("hidden");
+			document.getElementById("modal-backdrop").classList.remove("hidden");
 			which_comm = this.parentElement.id;;
 		});
 	}
@@ -25,6 +26,8 @@ function add_close_btn_event()
 	{
 		modals_x[i].addEventListener("click", () => {
 			document.getElementById("create-comment-modal").classList.add("hidden");
+			document.getElementById("create-post-modal").classList.add("hidden");
+			document.getElementById("modal-backdrop").classList.add("hidden");
 		});
 	}
 }
@@ -34,29 +37,34 @@ window.addEventListener("load",function() {
   add_close_btn_event();
 });
 
-//*
-let create_com_btn = document.getElementsByClassName('modal-accept-button')[0];
+//the create comment button has no id
+let create_com_btn = document.getElementById('create-comment-modal').children[0].children[2].children[1];
+
 create_com_btn.addEventListener("click", () => {	
-	var comment_content = 
-	{
-		text: document.getElementById("comment-text-input").value,
-		author: document.getElementById("comment-attribution-input").value,
-		parentID: which_comm,
-	};
+	// console.log("here");
 	
-	var comm_html = Handlebars.templates.commentTemplate(comment_content);
+	// var comment_content = 
+	// {
+		// text: document.getElementById("comment-text-input").value,
+		// author: document.getElementById("comment-attribution-input").value,
+		// parentID: which_comm,
+	// };
 	
-	//the comment div is the 5th child
-	var comment_container = document.getElementById(which_comm).children[4];
+	// var comm_html = Handlebars.templates.commentTemplate(comment_content);
 	
-	comment_container.insertAdjacentHTML("beforeend", comm_html);
+	// the comment div is the 5th child
+	// var comment_container = document.getElementById(which_comm).children[4];
 	
-	create_com_btn.parentElement.classList.add("hidden");
+	// comment_container.insertAdjacentHTML("beforeend", comm_html);
 	
-	console.log("create btn");
+	// create_com_btn.parentElement.classList.add("hidden");
+	
+	// console.log("create btn");
+	
+	
 	
 });
-//*/
+
 
 
 
