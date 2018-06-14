@@ -10,65 +10,8 @@
 
 <button type="button" class="create-new-button"> Make New Post! </button>
 
-<div id="modal-backdrop" class = "hidden"></div>
-<div id="create-post-modal" class = "hidden">
-  <div class="modal-dialog">
+{{>postModal}}
 
-    <div class="modal-header">
-      <h3>Create Your Post</h3>
-      <button type="button" class="modal-close-button">&times;</button>
-    </div>
-
-    <div class="modal-body">
-      <div class="post-input-element">
-        <label for="post-text-input">Post</label>
-        <textarea id="post-text-input"></textarea>
-      </div>
-      <div class="post-input-element">
-        <label for="post-attribution-input">Author</label>
-        <input type="text" id="post-attribution-input">
-      </div>
-    </div>
-    
-    <input type="checkbox" name="tag" class = "tag-checkbox" value="Nintendo"> <i class="fab fa-nintendo-switch"></i> Nintendo<br>
-    <input type="checkbox" name="tag" class = "tag-checkbox" value="Xbox"> <i class="fab fa-xbox"></i> Xbox<br>
-    <input type="checkbox" name="tag" class = "tag-checkbox" value="PlayStation"> <i class="fab fa-playstation"></i> PlayStation<br>
-
-    <div class="modal-footer">
-      <button type="button" class="modal-cancel-button">Cancel</button>
-      <button type="button" class="modal-accept-button">Create Post</button>
-    </div>
-
-  </div>
-</div>
-
-<div id="create-comment-modal" class = "hidden">
-  <div class="modal-dialog">
-
-    <div class="modal-header">
-      <h3>Create Your Comment</h3>
-      <button type="button" class="modal-close-button">&times;</button>
-    </div>
-
-    <div class="modal-body">
-      <div class="comment-input-element">
-        <label for="comment-text-input">Post</label>
-        <textarea id="comment-text-input"></textarea>
-      </div>
-      <div class="comment-input-element">
-        <label for="comment-attribution-input">Author</label>
-        <input type="text" id="comment-attribution-input">
-      </div>
-    </div>
-
-    <div class="modal-footer">
-      <button type="button" class="modal-cancel-button">Cancel</button>
-      <button type="button" class="modal-accept-button">Create Comment</button>
-    </div>
-
-  </div>
-</div>
-
-
+{{>commentModal}}
 
 <p class="page-end">Website created by Griffin Thenell, Alex Bailey, Luke Penner and Joey Landreville</p>
