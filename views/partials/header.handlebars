@@ -1,6 +1,6 @@
 <header>
     <!-- The <i> tag below includes the bullhorn icon from Font Awesome -->
-    <a href="#">
+    <a href="/">
         <h1 class="site-title">
             <i class="fas fa-gamepad"> </i> World 1-1 Forums </i>
         </h1>
@@ -9,20 +9,20 @@
     <nav class="navbar">
         <ul class="navlist">
             {{#with active}}
-            <li class="navitem navlink {{#if active_home}}active{{/if}}">
+            <li class="navitem navlink {{#if home}}active{{/if}}">
                 <a href="/">Home</a>
             </li>
-            <li class="navitem navlink {{#if active_nintendo}}active{{/if}}">
-                <a href="/tag/nintendo">
+            <li class="navitem navlink {{#if nintendo}}active{{/if}}">
+                <a href="/tags/nintendo">
                     <i class="fab fa-nintendo-switch"></i> Nintendo</a>
             </li>
-            <li class="navitem navlink {{#if active_xbox}}active{{/if}}">
-                <a href="/tag/xbox">
+            <li class="navitem navlink {{#if xbox}}active{{/if}}">
+                <a href="/tags/xbox">
                     <i class="fab fa-xbox">
                     </i> Xbox</a>
             </li>
-            <li class="navitem navlink {{#if active_playstation}}active{{/if}}">
-                <a href="/tag/playstation">
+            <li class="navitem navlink {{#if playstation}}active{{/if}}">
+                <a href="/tags/playstation">
                     <i class="fab fa-playstation">
                     </i> PlayStation</a>
             </li>

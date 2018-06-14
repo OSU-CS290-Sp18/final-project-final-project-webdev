@@ -23,7 +23,6 @@ a {
 .site-title {
   margin: 0;
   padding: 10px 20px;
-  font-size: %50;
   font-weight: bold;
   background-color: #96d717;
   color: #16344c;
@@ -124,14 +123,15 @@ a:focus {
   color: #16344c;
   float: right;
   margin-right: 0px;
-  font-size: 30px;
-  font-weight: bold;
+  width: 70px;
+  height: 70px;
+  font-size: 25px;
   position: fixed;
   right: 30px;
   bottom: 30px;
   cursor: pointer;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
+  border-radius: 999px;
 }
 
 .create-new-button:hover,
@@ -161,6 +161,7 @@ a:focus {
   flex-wrap: wrap;
   border: 20px;
   border-bottom: 20px;
+  margin-top: 25px;
 }
 
 .post {
@@ -440,11 +441,34 @@ hr {
 .error-container h2 {
   margin: 10px 0;
   font-size: 96px;
-  font-weight: 100;
+  font-weight: bold;
+  color: #96d717;
 }
 
-.error-container h3 {
-  margin: 10px 0;
-  font-size: 36px;
-  font-weight: 400;
+.tags-button-box{
+  text-align: center;	
+}
+
+.tags-button:hover,
+.tags-button:focus {
+  border: #96d717;
+  color: #44dbd4; 	
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.tags-button {
+  background-color: #96d717;
+  border: solid 5px #96d717;
+  color: #16344c;
+  font-size: 70px;
+  font-weight: bold;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
 }

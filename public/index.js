@@ -10,30 +10,60 @@ function add_comm_event()
 	var buttons = document.getElementsByClassName("comment-button");
 	for(i = 0; i < buttons.length; i++)
 	{
-		buttons[i].addEventListener("click", function(){
-			getElementById("create-comment-modal").classList.remove("hidden");
+		btn = buttons[i]
+		btn.addEventListener("click", function() {
+			document.getElementById("create-comment-modal").classList.remove("hidden");
+			document.getElementById("modal-backdrop").classList.remove("hidden");
+			which_comm = this.parentElement.id;;
 		});
 	}
 }
 
-function showCreatePostModal()
+function add_close_btn_event()
 {
-	var modalBackdrop = document.getElementById('modal-backdrop');
-	var createPostModal = document.getElementById('create-post-modal');
-
-	modalBackdrop.classList.remove('hidden');
-	createPostModal.classList.remove('hidden');
+	var modals_x =  document.getElementsByClassName("modal-close-button");
+	for(i = 0; i < modals_x.length; i++)
+	{
+		modals_x[i].addEventListener("click", () => {
+			document.getElementById("create-comment-modal").classList.add("hidden");
+			document.getElementById("create-post-modal").classList.add("hidden");
+			document.getElementById("modal-backdrop").classList.add("hidden");
+		});
+	}
 }
 
-function hideCreateTwitModal() {
+window.addEventListener("load",function() {
+  add_comm_event();
+  add_close_btn_event();
+});
 
-  var modalBackdrop = document.getElementById('modal-backdrop');
-  var createPostModal = document.getElementById('create-post-modal');
+//the create comment button has no id
+let create_com_btn = document.getElementById('create-comment-modal').children[0].children[2].children[1];
 
-  modalBackdrop.classList.add('hidden');
-  createPostModal.classList.add('hidden');
-
-}
+create_com_btn.addEventListener("click", () => {	
+	// console.log("here");
+	
+	// var comment_content = 
+	// {
+		// text: document.getElementById("comment-text-input").value,
+		// author: document.getElementById("comment-attribution-input").value,
+		// parentID: which_comm,
+	// };
+	
+	// var comm_html = Handlebars.templates.commentTemplate(comment_content);
+	
+	// the comment div is the 5th child
+	// var comment_container = document.getElementById(which_comm).children[4];
+	
+	// comment_container.insertAdjacentHTML("beforeend", comm_html);
+	
+	// create_com_btn.parentElement.classList.add("hidden");
+	
+	// console.log("create btn");
+	
+	
+	
+});
 
 function clearSearch() {
 	document.getElementById('navbar-search-input').value = "";
@@ -132,12 +162,7 @@ window.addEventListener("load",function() {
 	searchInput.addEventListener('input', doSearchUpdate);
 	}
 
+
+	add_comm_event();
+	add_close_btn_event();
 });
-/*
-let create_com_btn = document.getElementById('create-twit-button');
-create_twit_b.addEventListener("click", () => {
-	mod_back.className = "not_hidden";
-	create_twit_mod.className = "not_hidden";
-});
-*/
-		
