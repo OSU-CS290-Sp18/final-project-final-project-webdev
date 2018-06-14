@@ -35,7 +35,6 @@ app.get('/tag/:tag', function (req, res, next) {
             var active_tag = "active_" + tag;
             var active = {};
             active[active_tag] = true;
-            console.log(active);
             res.status(200).render('home', {
                 posts: posts,
                 active
