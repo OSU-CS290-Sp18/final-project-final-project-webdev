@@ -52,7 +52,7 @@ create_com_btn.addEventListener("click", () => {
 	
 	// var comm_html = Handlebars.templates.commentTemplate(comment_content);
 	
-	the comment div is the 5th child
+	// the comment div is the 5th child
 	// var comment_container = document.getElementById(which_comm).children[4];
 	
 	// comment_container.insertAdjacentHTML("beforeend", comm_html);
