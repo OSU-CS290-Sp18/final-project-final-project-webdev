@@ -19,6 +19,21 @@ function add_comm_event()
 
 		});
 	}
+
+}
+
+
+
+function remove_post_btn()
+{
+	var buttons = document.getElementsByClassName("delete-button");
+	for(i = 0; i < buttons.length; i++)
+	{
+		btn = buttons[i]
+		btn.addEventListener("click", function() {
+			this.parentElement.parentElement.removeChild(this.parentElement);
+		})
+	}
 }
 
 function add_close_btn_event()
@@ -310,4 +325,5 @@ window.addEventListener("load",function() {
 
 	add_comm_event();
 	add_close_btn_event();
+	remove_post_btn();
 });
