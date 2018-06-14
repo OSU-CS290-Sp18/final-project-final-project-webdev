@@ -2,6 +2,7 @@
 var path = require('path');
 var express = require('express');
 var exphbs = require('express-handlebars');
+var bodyParser = require('body-parser');
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -10,7 +11,7 @@ app.engine('handlebars', exphbs({
     defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
-
+app.use(bodyParser.json());
 
 ///////////////////////////////////////////////////////
 /////////////////////// ROUTES ////////////////////////
@@ -46,6 +47,21 @@ app.get('/tag/:tag', function (req, res, next) {
 
 app.use(express.static('public'));
 
+app.post('/post/new', (req, res, next) => {
+    // author and text are strings, tags is an array of strings
+    var post = {
+        author: req.body.author,
+        text: req.body.text,
+        tags: req.body.tags
+    }
+    
+    if (req.body.author && req.body.text) {
+        data.posts.push(post)
+        res.status(200).end()
+    }
+    else res.status(400).send("Request needs a json body with an author string, text string, and array of string tags.");
+});
+    
 app.get('*', function (req, res) {
     res.status(404).render('404');
 });
