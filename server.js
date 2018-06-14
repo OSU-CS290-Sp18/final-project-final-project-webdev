@@ -23,7 +23,7 @@ app.get('/', function (req, res, next) {
     res.status(200).render('home', { posts: data.posts, active: {home: true} });
 });
 
-app.get('/tag/:tag', function (req, res, next) {
+app.get('/tags/:tag', (req, res, next) => {
     const tag = req.params.tag;
     
     if (data.tags.includes(tag)) {
@@ -43,6 +43,10 @@ app.get('/tag/:tag', function (req, res, next) {
     } else {
         next();
     }
+});
+
+app.get('/tags', (req, res, next) => {
+    res.status(200).render('tags', { active: { home: true } });
 });
 
 app.use(express.static('public'));
