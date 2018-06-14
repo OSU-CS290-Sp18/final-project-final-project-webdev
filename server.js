@@ -19,7 +19,7 @@ app.set('view engine', 'handlebars');
 var data = require('./data.json');
 // root route
 app.get('/', function (req, res, next) {
-    res.status(200).render('home', { posts: data.posts });
+    res.status(200).render('home', { posts: data.posts, active: {active_home: true} });
 });
 
 app.get('/tag/:tag', function (req, res, next) {
@@ -32,8 +32,13 @@ app.get('/tag/:tag', function (req, res, next) {
             if (e.tags.includes(tag)) posts.push(e);
         }
         if (posts) {
+            var active_tag = "active_" + tag;
+            var active = {};
+            active[active_tag] = true;
+            console.log(active);
             res.status(200).render('home', {
-                posts: posts
+                posts: posts,
+                active
             });
         }
     } else {
