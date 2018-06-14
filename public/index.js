@@ -65,6 +65,24 @@ create_com_btn.addEventListener("click", () => {
 	
 });
 
+ function showCreatePostModal()
+ {
+ 	var modalBackdrop = document.getElementById('modal-backdrop');
+ 	var createPostModal = document.getElementById('create-post-modal');
+ 
+ 	modalBackdrop.classList.remove('hidden');
+ 	createPostModal.classList.remove('hidden');
+ }
+ function hideCreatePostModal() {
+ 
+   var modalBackdrop = document.getElementById('modal-backdrop');
+   var createPostModal = document.getElementById('create-post-modal');
+ 
+   modalBackdrop.classList.add('hidden');
+   createPostModal.classList.add('hidden');
+ 
+ }
+
 function clearSearch() {
 	document.getElementById('navbar-search-input').value = "";
 	doSearchUpdate();
@@ -144,12 +162,12 @@ window.addEventListener("load",function() {
 
 	var modalCancelButton = document.getElementsByClassName("modal-cancel-button")[0];
 	if (modalCancelButton) {
-		modalCancelButton.addEventListener('click', hideCreateTwitModal);
+		modalCancelButton.addEventListener('click', hideCreatePostModal);
 	}
 
 	var modalCloseButton = document.getElementsByClassName("modal-close-button")[0];
 	if (modalCloseButton) {
-		modalCloseButton.addEventListener('click', hideCreateTwitModal);
+		modalCloseButton.addEventListener('click', hideCreatePostModal);
 	}
 
 	var searchButton = document.getElementById('navbar-search-button');
