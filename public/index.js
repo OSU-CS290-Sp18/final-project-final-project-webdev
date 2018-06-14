@@ -41,9 +41,15 @@ window.addEventListener("load",function() {
   if (createPostButton)	{
   	createPostButton.addEventListener('click', showCreatePostModal);
   }
+
   var modalCancelButton = document.getElementsByClassName("modal-cancel-button")[0];
   if (modalCancelButton) {
   	modalCancelButton.addEventListener('click', hideCreateTwitModal);
+  }
+
+    var modalCloseButton = document.getElementsByClassName("modal-close-button")[0];
+  if (modalCloseButton) {
+  	modalCloseButton.addEventListener('click', hideCreateTwitModal);
   }
 });
 /*
