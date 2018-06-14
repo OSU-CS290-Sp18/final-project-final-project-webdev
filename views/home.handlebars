@@ -2,6 +2,13 @@
 
 <main class="post-container">
 
+    {{#each posts}}
+        {{> postTemplate}}
+    {{/each}}
+
+    <hr>
+
+
     <article class="post">
         <div class="post-content">
             <p class="post-text">

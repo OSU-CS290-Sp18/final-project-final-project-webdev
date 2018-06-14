@@ -10,13 +10,13 @@
   <p class="tags-title">Tags:</p>
   <ul class="tags-list">
     <li class="tags">
-      {{#each tag}}
-        <a class={{tag}} href="#">{{tag}}</a>
+      {{#each tags}}
+        <a class={{this}} href="#">{{this}}</a>
       {{/each}}
     </li>
   </ul>
   <p class="comment-title">Comments:</p>
-  {{#each comment}}
+  {{#each comments}}
     {{> commentTemplate}}
   {{/each}}
   <button type="button" class="comment-button">

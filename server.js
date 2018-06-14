@@ -16,9 +16,10 @@ app.set('view engine', 'handlebars');
 /////////////////////// ROUTES ////////////////////////
 ///////////////////////////////////////////////////////
 
+var data = require('./data.json');
 // root route
 app.get('/', function (req, res, next) {
-    res.status(200).render('home', {});
+    res.status(200).render('home', { posts: data.posts });
 });
 
 app.use(express.static('public'));
