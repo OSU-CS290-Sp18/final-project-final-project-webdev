@@ -1,8 +1,17 @@
 // setup
-var path = require('path');
-var express = require('express');
-var exphbs = require('express-handlebars');
-var bodyParser = require('body-parser');
+var path = require('path'),
+    express = require('express'),
+    exphbs = require('express-handlebars'),
+    bodyParser = require('body-parser'),
+    Mongo = require('mongodb').MongoClient;
+
+var mongoHost = process.env.MONGO_HOST,
+    mongoPort = process.env.MONGO_PORT || '27017',
+    mongoUsername = process.env.MONGO_USERNAME,
+    mongoPassword = process.env.MONGO_PASSWORD,
+    mongoDBName = process.env.MONGO_DB_NAME,
+    mongoURL = "mongodb://" + mongoUsername + ":" + mongoPassword + "@" + mongoHost + ":" + mongoPort + "/" + mongoDBName,
+    mongoDB = null;
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -18,21 +27,25 @@ app.use(bodyParser.json());
 ///////////////////////////////////////////////////////
 
 var data = require('./data.json');
-// root route
 app.get('/', function (req, res, next) {
-    res.status(200).render('home', { posts: data.posts, active: {home: true} });
+    var postCollection = mongoDB.collection('posts');
+    postCollection.find().toArray((err, posts) => {
+        if (err) {
+            res.status(500).send("Error fetching posts from DB.");
+        } else {
+            res.status(200).render('home', { posts: posts, active: {home: true} });
+        }
+    });
 });
 
 app.get('/tags/:tag', (req, res, next) => {
     const tag = req.params.tag;
     
-    if (data.tags.includes(tag)) {
-        var posts = [];
-        for (let i = 0; i < data.posts.length; i++) {
-            const e = data.posts[i];
-            if (e.tags.includes(tag)) posts.push(e);
-        }
-        if (posts) {
+    var postCollection = mongoDB.collection('posts');
+    postCollection.find({tags: tag}).toArray((err, posts) => {
+        if (err) {
+            res.status(500).send("Error fetching posts from DB.");
+        } else {
             var active = {};
             active[tag] = true;
             res.status(200).render('home', {
@@ -40,9 +53,7 @@ app.get('/tags/:tag', (req, res, next) => {
                 active
             });
         }
-    } else {
-        next();
-    }
+    });
 });
 
 app.get('/tags', (req, res, next) => {
@@ -52,37 +63,65 @@ app.get('/tags', (req, res, next) => {
 app.use(express.static('public'));
 
 app.post('/newPost', (req, res, next) => {
-    // author and text are strings, tags is an array of strings
-    var post = {
-        author: req.body.author,
-        text: req.body.text,
-        tags: req.body.tags
-    }
-    
     if (req.body.author && req.body.text) {
-        data.posts.push(post);
-        res.status(200).end();
+        var postCollection = mongoDB.collection('posts');
+        postCollection.count((err, count) => {
+            if (err) {
+                res.status(500).send('Error accessing DB.');
+            } else {
+                var post = {
+                    postID: count, 
+                    author: req.body.author,
+                    text: req.body.text,
+                    tags: req.body.tags,
+                    comments: []
+                }
+        
+                postCollection.insertOne(post, (err, result) => {
+                    if (err) {
+                        res.status(500).send('Error inserting post into DB.');
+                    } else {
+                        if (result.insertedCount > 0) {
+                            res.status(200).end();
+                        } else {
+                            next();
+                        }
+                    }
+                });
+            }
+        });
+
     }
     else res.status(400).send("Request needs a json body with an author string, text string, and array of string tags.");
 });
 
 app.post('/post/:id/newComment', (req, res, next) => {
     var id = parseInt(req.params.id, 10);
-    var post = data.posts.filter(e => e._id === id)[0];
-    if (post) {
-        if (req.body.author && req.body.text)
-        {
-            var comment = {
-                author: req.body.author,
-                text: req.body.text
+    
+    if (req.body.author && req.body.text)
+    {
+        var comment = {
+            author: req.body.author,
+            text: req.body.text
+        }
+        var postCollection = mongoDB.collection('posts');
+        postCollection.updateOne(
+            {postID: id},
+            {$push: { comments: { $each: [comment], $position: 0 }}},
+            (err, result) => {
+                if (err) {
+                    res.status(500).send('Error adding comment to post.');
+                } else {
+                    if (result.matchedCount > 0) {
+                        res.status(200).end();
+                    } else {
+                        next();
+                    }
+                }
             }
-            post.comments.push(comment);
-            res.status(200).end();
-        } 
-        else res.status(400).send("Request needs a json body with an author string and text string.");
-    } else {
-        next();
-    }
+        );
+    } 
+    else res.status(400).send("Request needs a json body with an author string and text string.");
 });
     
 app.get('*', function (req, res) {
@@ -91,6 +130,12 @@ app.get('*', function (req, res) {
 
 ///////////////////////////////////////////////////////
 
-app.listen(port, function () {
-    console.log("== Server is listening on port", port);
+Mongo.connect(mongoURL, (err, client) => {
+    if (err) {
+        throw err;
+    }
+    mongoDB = client.db(mongoDBName);
+    app.listen(port, () => {
+        console.log("== Server listening on port", port);
+    });
 });
