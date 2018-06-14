@@ -137,21 +137,38 @@ create_post_btn.addEventListener("click", () => {
 		tag_array.push("playstation");
 	}
 	
-	console.log(tag_array);
-	var posts = 
-	{
-		_id: 1000,
+	var posts = {
 		text: post_text.value,
 		author: post_author.value,
 		tags: tag_array,
 		comments: [],
 	}
-	
-	var post_html = Handlebars.templates.postTemplate(posts);
-	
-	var post_container = document.getElementsByClassName("post-container")[0];
-	
-	post_container.insertAdjacentHTML("beforeend", post_html);
+
+	var request = new XMLHttpRequest();
+	var postID = which_comm;
+	var url = "/newPost";
+	request.open("POST", url);
+
+	var requestBody = JSON.stringify({
+		text: post_text.value,
+		author: post_author.value,
+		tags: tag_array,
+		comments: [],
+	});
+	request.addEventListener('load', (event) => {
+		if (event.target.status === 200) {
+			var post_html = Handlebars.templates.postTemplate(posts);
+			
+			var post_container = document.getElementsByClassName("post-container")[0];
+			
+			post_container.insertAdjacentHTML("beforeend", post_html);
+		} else {
+			alert("Error creating comment: " + event.target.response);
+		}
+	});
+
+	request.setRequestHeader('Content-Type', 'application/json');
+	request.send(requestBody);
 	
 	add_comm_event();
 	
