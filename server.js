@@ -123,7 +123,7 @@ app.post('/post/:id/newComment', (req, res, next) => {
     else res.status(400).send("Request needs a json body with an author string and text string.");
 });
 
-app.post('/post/:id/delete', (req, res, next) => {
+app.delete('/post/:id/delete', (req, res, next) => {
     var id = parseInt(req.params.id, 10);
     
     var postCollection = mongoDB.collection('posts');
@@ -133,7 +133,7 @@ app.post('/post/:id/delete', (req, res, next) => {
             if (err) {
                 res.status(500).send('Error adding comment to post.');
             } else {
-                if (numremoved > 0) {
+                if (numRemoved > 0) {
                     res.status(200).end();
                 } else {
                     next();
