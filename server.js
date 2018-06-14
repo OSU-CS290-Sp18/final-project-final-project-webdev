@@ -46,7 +46,7 @@ app.get('/tags/:tag', (req, res, next) => {
 });
 
 app.get('/tags', (req, res, next) => {
-    res.status(200).render('tags', { active: { home: true } });
+    res.status(200).render('tags', { active: { tags: true } });
 });
 
 app.use(express.static('public'));
